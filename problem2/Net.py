@@ -1,23 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-class AdalineGD(object):
-    # 自适应线性神经网络:ADAptive LInear NEuron (Adaline)
-
-    # --------  参数  --------#
-    # 参数1   eta:float   学习率
-    # 参数2   n_iter:int  循环次数
-    # --------  属性  --------#
-    # 属性1   w_:1d_array     拟合后权值
-    # 属性2   errors_:list    每次迭代的错误分类
-
+class Adaline(object):
     # 初始化
     def __init__(self,eta=0.01,n_iter=10):
         self.eta = eta
         self.n_iter = n_iter
 
-    def get_w(self):
-        return self.w_
     # 训练模型
     def fit(self,X,y):
         self.w_ = np.zeros(1+X.shape[1])
