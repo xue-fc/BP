@@ -9,7 +9,6 @@ def draw(a,l):
     pre_neg = a[l == 0, :2]
     plt.scatter(pre_pos[:, 0], pre_pos[:, 1], color='r', label='pos')
     plt.scatter(pre_neg[:, 0], pre_neg[:, 1], color='b', label='neg')
-    # plt.title('Epoch:'+str(epoch)+' Acc:'+str(acc))
     plt.title("data point")
     plt.legend()
     plt.show()
@@ -20,15 +19,18 @@ def sigmoid(x):
         x[i] = 1.0/(1+math.exp(-x[i]))
     return x
 
+#求导的时候会用到，先求反函数再代入导函数里可得到这个结果
 def dsigmoid(x):
     return x*(1-x)
 
+#从向量生成一个对角矩阵
 def vector2dia(x):
     t = np.zeros([len(x),len(x)])
     for i in range(len(x)):
         t[i][i] = x[i]
     return t
 
+#向量和从它生成的矩阵相乘，实现对每一维平方
 def square(x):
     return np.dot(vector2dia(x),x)
 
