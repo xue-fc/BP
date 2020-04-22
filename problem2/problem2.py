@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 import torch.nn as nn
-from Net import AdalineGD
+from Net import Adaline
 import torch.optim as optim
 import matplotlib.pyplot as plt
 from Mydataset import myDataSet
@@ -47,14 +47,13 @@ def drawBoundary(sample, pre_label):
     pre_neg = sample[pre_label==1]
     plt.scatter(pre_pos[:,0], pre_pos[:,1], color='r', label='pos')
     plt.scatter(pre_neg[:,0], pre_neg[:,1], color='b', label='neg')
-    #plt.title('Epoch:'+str(epoch)+' Acc:'+str(acc))
     plt.title("eta = 0.01")
     plt.legend()
     plt.show()
 
 def main():
     drawBoundary(full_set[:,:2],full_set[:,2])
-    net = AdalineGD(0.1, 100)
+    net = Adaline(0.1, 100)
     net.fit(train_set, train_label)
     #print(net.predict(full_set))
     net.plot_errors()
